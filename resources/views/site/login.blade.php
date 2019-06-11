@@ -136,9 +136,22 @@
             <label class="checkbox-inline"><input type="checkbox"> Remember me</label>
             <a href="#" class="forgot-link">Forgot Password?</a>
         </div> -->
-        <input type="submit" class="btn btn-primary btn-block btn-lg" value="Login">              
+        <!-- <input type="submit" class="btn btn-primary btn-block btn-lg" value="Login">      -->
+        <button id="login_button" type="submit" class="btn btn-success btn-lg btn-block info">
+            <span id="login_button_span"><i class='fa fa-spinner fa-spin'></i></span>
+            Login
+        </button>          
     </form>			
     <!--<div class="text-center small">Don't have an account? <a href="#">Sign up</a></div>-->
 </div>
+
+<script type="text/javascript">
+$(document).ready(function () {
+
+$("#login_button_span").hide();
+
+});
+</script>
+
 </body>
 </html>                                		                            

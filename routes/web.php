@@ -16,6 +16,7 @@
 Route::get('/','App@index')->name('home');
 Route::get('/login','App@login')->name('login');
 Route::get('/logout','App@Logout')->name('logout');
+Route::get('/maintenance','App@Maintenance')->name('maintenance');
 Route::get('/client','ClientDetail@index')->name('clientDetails');
 Route::get('/summary','ClientDetail@summary')->name('clientSummary');
 

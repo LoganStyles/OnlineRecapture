@@ -12,6 +12,7 @@ class App extends Controller
     
     public function index()
     {
+        // return view('/site/maintenance');
         $stored_pin=session('pin');
         $stored_clientid=session('clientID');
 
@@ -47,6 +48,10 @@ class App extends Controller
 
         Session::flush();
         return redirect()->route('login');
+    }
+
+    public function Maintenance(){
+        return view('/site/maintenance');
     }
   
 

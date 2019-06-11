@@ -298,7 +298,7 @@ $DateOfAppointment=(!isset($client_details['DateOfAppointment']) || trim($client
                                                 </button>                                                
                                             </div>
                                             <div class="col-md-3" style="float:right;"> 
-                                                <a href="#employment" class="btn btn-success btn-lg btn-block info" aria-controls="employment" role="tab" data-toggle="tab">Next</a>                                              
+                                                <a href="#employment" class="btn btn-primary btn-lg btn-block info" aria-controls="employment" role="tab" data-toggle="tab">Next</a>                                              
                                             </div>
                                             <br style="clear:all">
                                         </div> <br><br>
@@ -627,7 +627,7 @@ $DateOfAppointment=(!isset($client_details['DateOfAppointment']) || trim($client
 
                                         <div class="form-group">
                                         <div class="col-md-3"> 
-                                                <a href="#personal" class="btn btn-success btn-lg btn-block info" aria-controls="personal" role="tab" data-toggle="tab">Back</a>                                              
+                                                <a href="#personal" class="btn btn-primary btn-lg btn-block info" aria-controls="personal" role="tab" data-toggle="tab">Back</a>                                              
                                             </div>
                                             <div class="col-md-3">
                                                 <button id="employment_button" type="submit" class="btn btn-success btn-lg btn-block info">
@@ -636,7 +636,7 @@ $DateOfAppointment=(!isset($client_details['DateOfAppointment']) || trim($client
                                                 </button> 
                                             </div>
                                             <div class="col-md-3" style="float:right;"> 
-                                                <a href="#correspondence" class="btn btn-success btn-lg btn-block info" aria-controls="correspondence" role="tab" data-toggle="tab">Next</a>                                              
+                                                <a href="#correspondence" class="btn btn-primary btn-lg btn-block info" aria-controls="correspondence" role="tab" data-toggle="tab">Next</a>                                              
                                             </div>
                                             <br style="clear:all">
                                         </div> <br><br>
@@ -765,7 +765,7 @@ $DateOfAppointment=(!isset($client_details['DateOfAppointment']) || trim($client
 
                                         <div class="form-group">
                                         <div class="col-md-3"> 
-                                                <a href="#employment" class="btn btn-success btn-lg btn-block info" aria-controls="employment" role="tab" data-toggle="tab">Back</a>                                              
+                                                <a href="#employment" class="btn btn-primary btn-lg btn-block info" aria-controls="employment" role="tab" data-toggle="tab">Back</a>                                              
                                             </div>
                                             <div class="col-md-3">
                                                 <button id="correspondence_button" type="submit" class="btn btn-success btn-lg btn-block info">
@@ -775,7 +775,7 @@ $DateOfAppointment=(!isset($client_details['DateOfAppointment']) || trim($client
 
                                             </div>
                                             <div class="col-md-3" style="float:right;"> 
-                                                <a href="#nextofkin" class="btn btn-success btn-lg btn-block info" aria-controls="nextofkin" role="tab" data-toggle="tab">Next</a>                                              
+                                                <a href="#nextofkin" class="btn btn-primary btn-lg btn-block info" aria-controls="nextofkin" role="tab" data-toggle="tab">Next</a>                                              
                                             </div>
                                             <br style="clear:all">
                                         </div> <br><br>
@@ -941,7 +941,7 @@ $DateOfAppointment=(!isset($client_details['DateOfAppointment']) || trim($client
 
                                         <div class="form-group">
                                         <div class="col-md-3"> 
-                                                <a href="#correspondence" class="btn btn-success btn-lg btn-block info" aria-controls="correspondence" role="tab" data-toggle="tab">Back</a>                                              
+                                                <a href="#correspondence" class="btn btn-primary btn-lg btn-block info" aria-controls="correspondence" role="tab" data-toggle="tab">Back</a>                                              
                                             </div>
 
                                             <div class="col-md-3">
@@ -952,7 +952,7 @@ $DateOfAppointment=(!isset($client_details['DateOfAppointment']) || trim($client
                                             </div>
 
                                             <div class="col-md-3" style="float:right;"> 
-                                                <a href="#summary" class="btn btn-success btn-lg btn-block info" aria-controls="summary" role="tab" data-toggle="tab">Next</a>                                              
+                                                <a href="#summary" class="btn btn-primary btn-lg btn-block info" aria-controls="summary" role="tab" data-toggle="tab">Next</a>                                              
                                             </div>
                                             <br style="clear:all">
                                         </div> <br><br>
@@ -1001,7 +1001,7 @@ $DateOfAppointment=(!isset($client_details['DateOfAppointment']) || trim($client
                                         
                                         <div class="form-group">
                                         <div class="col-md-3"> 
-                                                <a href="#nextofkin" class="btn btn-success btn-lg btn-block info" aria-controls="nextofkin" role="tab" data-toggle="tab">Back</a>                                              
+                                                <a href="#nextofkin" class="btn btn-primary btn-lg btn-block info" aria-controls="nextofkin" role="tab" data-toggle="tab">Back</a>                                              
                                             </div>
 
                                             <div class="col-md-3">

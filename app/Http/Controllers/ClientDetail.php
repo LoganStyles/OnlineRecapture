@@ -14,8 +14,8 @@ use URL;
 class ClientDetail extends App
 {
     // private $base_url="http://192.168.130.10/RecaptureAPI/";
-    private $base_url="http://localhost/Recapture/";
-    // private $base_url="http://localhost:62798/";
+    // private $base_url="http://localhost/Recapture/";
+    private $base_url="http://localhost:62798/";
     //  private $base_url="https://ffpro.ieianchorpensions.com/RecaptureAPI/"; 
 
     public function index(){
@@ -44,10 +44,12 @@ class ClientDetail extends App
             'PIN' => 'required|max:15|min:12'//modify error msg later
         ]);
         $selected_pin = filter_var($request['PIN'], FILTER_SANITIZE_STRING);  
+
         //chk for pin format, if PEN is not included add it,
-        if(strpos($selected_pin, "PEN") !== 0 && (strlen($selected_pin)===12)){
+        if(stripos($selected_pin, "PEN") !== 0 && (strlen($selected_pin)===12)){
             $selected_pin="PEN".$selected_pin;
         }
+        // 
 
         $result_data=$this->getClientDetails($selected_pin);
 
@@ -66,6 +68,7 @@ class ClientDetail extends App
     
 
     public function getClientDetails($pin){
+        // echo 'select '.$pin;exit;
 
         $data=array("error_msg"=>"");
 
