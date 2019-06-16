@@ -14,8 +14,8 @@ use URL;
 class ClientDetail extends App
 {
     // private $base_url="http://192.168.130.10/RecaptureAPI/";
-    // private $base_url="http://localhost/Recapture/";
-    private $base_url="http://localhost:62798/";
+    private $base_url="http://localhost/Recapture/";
+    // private $base_url="http://localhost:62798/";
     //  private $base_url="https://ffpro.ieianchorpensions.com/RecaptureAPI/"; 
 
     public function index(){
@@ -68,8 +68,6 @@ class ClientDetail extends App
     
 
     public function getClientDetails($pin){
-        // echo 'select '.$pin;exit;
-
         $data=array("error_msg"=>"");
 
         $client = new Client (['base_uri'=> $this->base_url]);
