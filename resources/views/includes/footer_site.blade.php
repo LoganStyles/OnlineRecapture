@@ -5,7 +5,7 @@
 
 <script>
     $(document).ready(function(){
-      // window.location = '#personal';
+    
 
 //dates
       var today = new Date();

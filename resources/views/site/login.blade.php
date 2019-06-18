@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <style type="text/css">
     body {
         color: #999;
@@ -108,7 +109,7 @@
 		<div class="avatar"><i class="material-icons">&#xE7FF;</i></div>
     	<h4 class="modal-title">Login with your PIN</h4>
         <div class="form-group">
-            <input type="text" name="PIN" class="form-control" placeholder="PIN" required="required" value="{{ old('PIN') }}">
+            <input type="text" name="PIN" id="PIN" class="form-control" placeholder="PIN" required="required" value="{{ old('PIN') }}">
             <br>
             @if (session('error_msg'))
                 <div class="alert alert-danger">
@@ -122,35 +123,31 @@
                 </div>
             @endif
         </div>
-
-        <!--<div class="form-group">
-            <input type="password" name="password" class="form-control" placeholder="Password"  >
-            @if ($errors->has('password'))
-                <span class="help-block error-form">
-                    <strong>{{ $errors->first('password') }}</strong>
-                </span>
-            @endif
-        </div>-->
-
-       <!-- <div class="form-group small clearfix">
-            <label class="checkbox-inline"><input type="checkbox"> Remember me</label>
-            <a href="#" class="forgot-link">Forgot Password?</a>
-        </div> -->
-        <!-- <input type="submit" class="btn btn-primary btn-block btn-lg" value="Login">      -->
         <button id="login_button" type="submit" class="btn btn-success btn-lg btn-block info">
-            <span id="login_button_span"><i class='fa fa-spinner fa-spin'></i></span>
             Login
-        </button>          
-    </form>			
-    <!--<div class="text-center small">Don't have an account? <a href="#">Sign up</a></div>-->
+        </button>    
+             
+    </form>	
 </div>
 
 <script type="text/javascript">
 $(document).ready(function () {
 
-$("#login_button_span").hide();
+
+var base_url = "http://localhost:81/IEIOnlineRecapture/";
+// var base_url = "https://datarecapture.ieianchorpensions.com/";
+
+
+$("#login_button").on("click", function(){
+    var client_pin=$("#PIN").val();
+    if(client_pin)
+    $(this).text("Loging in...")
+//   var login_button=$(this).text()
+});
 
 });
+
+
 </script>
 
 </body>

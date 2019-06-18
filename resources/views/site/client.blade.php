@@ -14,49 +14,17 @@ $relationship = $data['relationship'];
 
 $client_details = $data['clientDetails'];
 $sectorClass=$client_details['SectorClass'];
-//personal
-// 
-// $title = $client_details['Title'];
-// $gender = $client_details['Gender'];
-// $maritalStatus=$client_details['MaritalStatus'];
-// $DateOfBirth= date("d/m/Y", strtotime($client_details['DateOfBirth']));
-//employment
-// $EmployerName=$client_details['EmployerName'];
-$EmployerCountry=$client_details['EmployerCountry'];
-// $EmployerState=$client_details['EmployerState'];
-// $EmployerLGA=$client_details['EmployerLGA'];
-// $DateEmployed= date("d/m/Y", strtotime($client_details['DateEmployed']));
-// $DateOfFirstAppointment= date("d/m/Y", strtotime($client_details['DateOfFirstAppointment']));
-// $DateOfCurrentAppointment= date("d/m/Y", strtotime($client_details['DateOfCurrentAppointment']));
-// $DateOfTransfer= date("d/m/Y", strtotime($client_details['DateOfTransfer']));
-// $DateJoinedIPPIS= date("d/m/Y", strtotime($client_details['DateJoinedIPPIS']));
-// 
+
+$EmployerCountry=$client_details['EmployerCountry']; 
 
 //correspondence
 $Nationality=($client_details['Nationality'] ==''?'NG':$client_details['Nationality']);
-// $StateOfOrigin=$client_details['StateOfOrigin'];
-// $LGAOfOrigin=$client_details['LGAOfOrigin'];
+
 $CountryOfResidence=($client_details['CountryOfResidence']==''?'NG':$client_details['CountryOfResidence']);
-// $StateOfResidence=$client_details['StateOfResidence'];
-// $LGAOfResidence=$client_details['LGAOfResidence'];
-// $LocationNA=$client_details['LocationNA'];
+
 
 //Next of Kin
-// $NokTitle=$client_details['NokTitle'];
-// $NokGender=$client_details['NokGender'];
-// $NokLocationNA=$client_details['NokLocationNA'];
 $NokCountry=$client_details['NokCountry'];
-// $NokStateCode=$client_details['NokStateCode'];
-// $NokLGACode=$client_details['NokLGACode'];
-//$NokDateOfBirth=date("d/m/Y", strtotime($client_details['NokDateOfBirth']));
-
-//salary
-// $HarmonizedSalaryStructure2004=$client_details['HarmonizedSalaryStructure2004'];
-// $ConsolidatedSalaryStructure2007=$client_details['ConsolidatedSalaryStructure2007'];
-// $ConsolidatedSalaryStructure2010=$client_details['ConsolidatedSalaryStructure2010'];
-// $ConsolidatedSalaryStructure2013=$client_details['ConsolidatedSalaryStructure2013'];
-// $ConsolidatedSalaryStructure2016=$client_details['ConsolidatedSalaryStructure2016'];
-// $CurrentSalaryStructure=$client_details['CurrentSalaryStructure'];
 
 //appointment
 $locationID=(!isset($client_details['locationID']) || trim($client_details['locationID']) ==="" ?"":$client_details['locationID']);
@@ -70,7 +38,9 @@ $DateOfAppointment=(!isset($client_details['DateOfAppointment']) || trim($client
 <body>
 <nav class="navbar navbar-default navbar-expand-lg navbar-light">
 	<div class="navbar-header d-flex col">
-		<a class="navbar-brand" href="#">Data<b>Recapture</b></a>  		
+    <a class="navbar-brand" href="#"><img style="max-width:35%;"  src="{{ asset('/css/images/iei_anchor.jpg')}}" /></a>  
+	<a class="navbar-brand" href="#">Data <b>Recapture</b> Execersie</a>
+        		
 		<button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle navbar-toggler ml-auto">
 			<span class="navbar-toggler-icon"></span>
 			<span class="icon-bar"></span>
@@ -119,6 +89,7 @@ $DateOfAppointment=(!isset($client_details['DateOfAppointment']) || trim($client
                         </li>
                     </ul>
                     <!-- end design process steps--> 
+                    <div style="color:#f00";>Fields marked with (*) are required</div>
                     <!-- Tab panes -->
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane active" id="personal">
@@ -295,14 +266,14 @@ $DateOfAppointment=(!isset($client_details['DateOfAppointment']) || trim($client
                                         
 
                                         <div class="form-group">
-                                            <div class="col-md-3">
+                                            <div class="col-md-3" style="float:right;">
                                                 <button id="personal_button" type="submit" class="btn btn-success btn-lg btn-block info">
                                                     <span id="personal_button_span"><i class='fa fa-spinner fa-spin' ></i></span>Save & Continue
                                                 </button>                                                
                                             </div>
-                                            <div class="col-md-3" style="float:right;"> 
+                                            <!--<div class="col-md-3" style="float:right;"> 
                                                 <a href="#employment" class="btn btn-primary btn-lg btn-block info" aria-controls="employment" role="tab" data-toggle="tab">Next</a>                                              
-                                            </div>
+                                            </div>-->
                                             <br style="clear:all">
                                         </div> <br><br>
                                     </fieldset>
@@ -632,15 +603,15 @@ $DateOfAppointment=(!isset($client_details['DateOfAppointment']) || trim($client
                                         <div class="col-md-3"> 
                                                 <a href="#personal" class="btn btn-primary btn-lg btn-block info" aria-controls="personal" role="tab" data-toggle="tab">Back</a>                                              
                                             </div>
-                                            <div class="col-md-3">
+                                            <div class="col-md-3" style="float:right;">
                                                 <button id="employment_button" type="submit" class="btn btn-success btn-lg btn-block info">
                                                     <span id="employment_button_span"><i class='fa fa-spinner fa-spin' ></i></span>
                                                     Save & Continue
                                                 </button> 
                                             </div>
-                                            <div class="col-md-3" style="float:right;"> 
+                                            <!--<div class="col-md-3" style="float:right;"> 
                                                 <a href="#correspondence" class="btn btn-primary btn-lg btn-block info" aria-controls="correspondence" role="tab" data-toggle="tab">Next</a>                                              
-                                            </div>
+                                            </div>-->
                                             <br style="clear:all">
                                         </div> <br><br>
                                     </fieldset>
@@ -753,7 +724,12 @@ $DateOfAppointment=(!isset($client_details['DateOfAppointment']) || trim($client
 
                                             <div class="col-md-4">
                                                 <label for="HomePhone">Home Phone:</label>
-                                                <input type="text" class="form-control" id="HomePhone" name="HomePhone" value="">                                                 
+                                                <input type="text" class="form-control" id="HomePhone" name="HomePhone" value="">     
+                                                @if ($errors->has('HomePhone'))
+                                                    <span class="help-block">
+                                                        <strong>{{ $errors->first('HomePhone') }}</strong>
+                                                    </span>
+                                                @endif                                            
                                             </div>
 
                                             <div class="col-md-4">
@@ -770,16 +746,16 @@ $DateOfAppointment=(!isset($client_details['DateOfAppointment']) || trim($client
                                         <div class="col-md-3"> 
                                                 <a href="#employment" class="btn btn-primary btn-lg btn-block info" aria-controls="employment" role="tab" data-toggle="tab">Back</a>                                              
                                             </div>
-                                            <div class="col-md-3">
+                                            <div class="col-md-3" style="float:right;">
                                                 <button id="correspondence_button" type="submit" class="btn btn-success btn-lg btn-block info">
                                                     <span id="correspondence_button_span"><i class='fa fa-spinner fa-spin'></i></span>
                                                     Save & Continue
                                                 </button> 
 
                                             </div>
-                                            <div class="col-md-3" style="float:right;"> 
+                                            <!--<div class="col-md-3" style="float:right;"> 
                                                 <a href="#nextofkin" class="btn btn-primary btn-lg btn-block info" aria-controls="nextofkin" role="tab" data-toggle="tab">Next</a>                                              
-                                            </div>
+                                            </div>-->
                                             <br style="clear:all">
                                         </div> <br><br>
                                     </fieldset>
@@ -916,15 +892,6 @@ $DateOfAppointment=(!isset($client_details['DateOfAppointment']) || trim($client
                                             </div>
 
                                              
-                                            <!--<div class="col-md-4">
-                                                <label class="control-label" for="NokDateOfBirth">Date Of Birth:</label>
-                                                <div class="input-group">
-                                                    <input class="form-control" id="NokDateOfBirth" name="NokDateOfBirth" placeholder="DD/MM/YYYY" type="text"/>
-                                                    <div class="input-group-addon"> <i class="fa fa-calendar"></i></div>
-                                                </div>
-
-                                            </div>-->
-
                                             <div class="col-md-4">
                                                 <label for="NokMobilePhone">Mobile Phone:</label>
                                                 <input type="text" class="form-control" id="NokMobilePhone" name="NokMobilePhone" value="">
@@ -947,16 +914,13 @@ $DateOfAppointment=(!isset($client_details['DateOfAppointment']) || trim($client
                                                 <a href="#correspondence" class="btn btn-primary btn-lg btn-block info" aria-controls="correspondence" role="tab" data-toggle="tab">Back</a>                                              
                                             </div>
 
-                                            <div class="col-md-3">
+                                            <div class="col-md-3" style="float:right;">
                                                 <button id="nextofkin_button" type="submit" class="btn btn-success btn-lg btn-block info">
                                                     <span id="nextofkin_button_span"><i class='fa fa-spinner fa-spin'></i></span>
                                                     Save & Continue
                                                 </button> 
                                             </div>
 
-                                            <div class="col-md-3" style="float:right;"> 
-                                                <a href="#summary" class="btn btn-primary btn-lg btn-block info" aria-controls="summary" role="tab" data-toggle="tab">Next</a>                                              
-                                            </div>
                                             <br style="clear:all">
                                         </div> <br><br>
                                     </fieldset>
@@ -966,6 +930,7 @@ $DateOfAppointment=(!isset($client_details['DateOfAppointment']) || trim($client
                         <div role="tabpanel" class="tab-pane" id="summary">
                             <div class="design-process-content">
                                 <h3>Schedule An Appointment</h3>
+                                <h5>To complete the Data Recapture Exercise, please visit one of our branches</h5>
                                 <form class="form-horizontal" role="form" method="POST" action="{{ url('/process_appointment') }}" id="form-completion">
                                 {!! csrf_field() !!}
                                     <fieldset>
@@ -980,12 +945,12 @@ $DateOfAppointment=(!isset($client_details['DateOfAppointment']) || trim($client
                                             </div>
 
                                             <div class="col-md-4">
-                                                <label for="ClientEmail">Contact Email:</label>
+                                                <label for="ClientEmail"><span style="color:#f00";>*</span>Contact Email:</label>
                                                 <input type="text" class="form-control" id="ClientEmail" name="ClientEmail" value="{{$contactEmail}}">
                                             </div>
                                             
                                             <div class="col-md-4">
-                                                <label for="ClientPhone">Contact Phone:</label>
+                                                <label for="ClientPhone"><span style="color:#f00";>*</span>Contact Phone:</label>
                                                 <input type="text" class="form-control" id="ClientPhone" name="ClientPhone" value="{{$contactPhone}}">
                                             </div>
                                     </div>
@@ -1007,10 +972,10 @@ $DateOfAppointment=(!isset($client_details['DateOfAppointment']) || trim($client
                                                 <a href="#nextofkin" class="btn btn-primary btn-lg btn-block info" aria-controls="nextofkin" role="tab" data-toggle="tab">Back</a>                                              
                                             </div>
 
-                                            <div class="col-md-3">
+                                            <div class="col-md-3" style="float:right;">
                                                 <button id="summary_button" type="submit" class="btn btn-success btn-lg btn-block info">
                                                     <span id="summary_button_span"><i class='fa fa-spinner fa-spin'></i></span>
-                                                    Save & Continue
+                                                    Submit
                                                 </button> 
                                             </div>
                                         </div> <br><br>

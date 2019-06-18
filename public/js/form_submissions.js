@@ -215,7 +215,7 @@ $(document).ready(function () {
             // url: base_url + 'process_correspondence_details',
             data: correspondenceData,
             success: function (data) {
-                // console.log(data)
+                console.log('success dta '+data)
                 if (data.success === 1) {
                     var href = "#nextofkin";
                     var $curr = $(".process-model  a[href='" + href + "']").parent();
@@ -231,7 +231,8 @@ $(document).ready(function () {
                 }
             },
             error: function (err) {
-                // console.log(err.responseText);
+                console.log(err.responseText);
+                console.log(err)
             },
             complete: function () {
                 $("#correspondence_button").attr('disabled', false);
@@ -334,13 +335,14 @@ $(document).ready(function () {
             // url: base_url + 'process_appointment',
             data: summaryData,
             success: function (data) {
+                console.log('data '+data);
                 if (data.success === 1) {
                     window.location=base_url +"public/summary";
                     // window.location=base_url +"summary";
                 }
             },
             error: function (err) {
-                // console.log(err.responseText);
+                console.log(err.responseText);
             },
             complete: function () {
                 $("#summary_button").attr('disabled', false);
