@@ -39,7 +39,7 @@ $DateOfAppointment=(!isset($client_details['DateOfAppointment']) || trim($client
 <nav class="navbar navbar-default navbar-expand-lg navbar-light">
 	<div class="navbar-header d-flex col">
     <a class="navbar-brand" href="#"><img style="max-width:35%;"  src="{{ asset('/css/images/iei_anchor.jpg')}}" /></a>  
-	<a class="navbar-brand" href="#">Data <b>Recapture</b> Execersie</a>
+	<a class="navbar-brand" href="#">Data <b>Recapture</b> Exercise</a>
         		
 		<button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle navbar-toggler ml-auto">
 			<span class="navbar-toggler-icon"></span>

@@ -66,7 +66,7 @@ $(document).ready(function () {
                     //
                     $('#personal').removeClass("active");
                     $('#employment').addClass("active");
-                }else{
+                } else {
                     //show failed message
                 }
             },
@@ -159,7 +159,7 @@ $(document).ready(function () {
                     //
                     $('#employment').removeClass("active");
                     $('#correspondence').addClass("active");
-                }else{
+                } else {
                     //show failed message
                 }
             },
@@ -215,7 +215,7 @@ $(document).ready(function () {
             // url: base_url + 'process_correspondence_details',
             data: correspondenceData,
             success: function (data) {
-                console.log('success dta '+data)
+                console.log('success dta ' + data)
                 if (data.success === 1) {
                     var href = "#nextofkin";
                     var $curr = $(".process-model  a[href='" + href + "']").parent();
@@ -226,7 +226,7 @@ $(document).ready(function () {
                     //
                     $('#correspondence').removeClass("active");
                     $('#nextofkin').addClass("active");
-                }else{
+                } else {
                     //show failed message
                 }
             },
@@ -296,7 +296,7 @@ $(document).ready(function () {
                     //
                     $('#nextofkin').removeClass("active");
                     $('#summary').addClass("active");
-                }else{
+                } else {
                     //show failed message
                 }
             },
@@ -311,11 +311,11 @@ $(document).ready(function () {
         });
     });
 
-    var summaryData={
-        locationID: "", contactEmail: "", contactPhone: "",DateOfAppointmentString:""
+    var summaryData = {
+        locationID: "", contactEmail: "", contactPhone: "", DateOfAppointmentString: ""
     };
 
-    $("#form-completion").submit(function(e){
+    $("#form-completion").submit(function (e) {
 
         e.preventDefault();
 
@@ -335,9 +335,9 @@ $(document).ready(function () {
             // url: base_url + 'process_appointment',
             data: summaryData,
             success: function (data) {
-                console.log('data '+data);
+                console.log('data ' + data);
                 if (data.success === 1) {
-                    window.location=base_url +"public/summary";
+                    window.location = base_url + "public/summary";
                     // window.location=base_url +"summary";
                 }
             },
@@ -351,6 +351,138 @@ $(document).ready(function () {
 
         });
 
+    });
+
+    $("#EmployerState").on("change", function () {
+        var state = $(this).val();
+        var obj = { state: state };
+
+        $.ajax({
+            type: 'POST',
+            url: base_url + 'public/get_lgas',
+            data: obj,
+            success: function (results) {
+                var response =results.selected_lgas;
+
+                $("#EmployerLGA").html("");
+                var options="";
+                var current_option="";
+
+                if(response.length > 0){
+                    for(var i=0;i < response.length; i++){
+                        current_option=response[i];
+                        options+='<option value="'+current_option.CODE+'">'+current_option.DESCRIPTION+'</option>';
+                    };
+
+                   $("#EmployerLGA").html(options);
+                }
+            },
+            error: function (err) {
+                // console.log(err.responseText);
+            },
+            complete: function () {
+                // console.log("list fetched!");
+            }
+        });
+    });
+
+    $("#StateOfOrigin").on("change", function () {
+        var state = $(this).val();
+        var obj = { state: state };
+
+        $.ajax({
+            type: 'POST',
+            url: base_url + 'public/get_lgas',
+            data: obj,
+            success: function (results) {
+                var response =results.selected_lgas;
+
+                $("#LGAOfOrigin").html("");
+                var options="";
+                var current_option="";
+
+                if(response.length > 0){
+                    for(var i=0;i < response.length; i++){
+                        current_option=response[i];
+                        options+='<option value="'+current_option.CODE+'">'+current_option.DESCRIPTION+'</option>';
+                    };
+
+                   $("#LGAOfOrigin").html(options);
+                }
+            },
+            error: function (err) {
+                // console.log(err.responseText);
+            },
+            complete: function () {
+                // console.log("list fetched!");
+            }
+        });
+    });
+
+    $("#StateOfResidence").on("change", function () {
+        var state = $(this).val();
+        var obj = { state: state };
+
+        $.ajax({
+            type: 'POST',
+            url: base_url + 'public/get_lgas',
+            data: obj,
+            success: function (results) {
+                var response =results.selected_lgas;
+
+                $("#LGAOfResidence").html("");
+                var options="";
+                var current_option="";
+
+                if(response.length > 0){
+                    for(var i=0;i < response.length; i++){
+                        current_option=response[i];
+                        options+='<option value="'+current_option.CODE+'">'+current_option.DESCRIPTION+'</option>';
+                    };
+
+                   $("#LGAOfResidence").html(options);
+                }
+            },
+            error: function (err) {
+                // console.log(err.responseText);
+            },
+            complete: function () {
+                // console.log("list fetched!");
+            }
+        });
+    });
+
+    $("#NokStateCode").on("change", function () {
+        var state = $(this).val();
+        var obj = { state: state };
+
+        $.ajax({
+            type: 'POST',
+            url: base_url + 'public/get_lgas',
+            data: obj,
+            success: function (results) {
+                var response =results.selected_lgas;
+
+                $("#NokLGACode").html("");
+                var options="";
+                var current_option="";
+
+                if(response.length > 0){
+                    for(var i=0;i < response.length; i++){
+                        current_option=response[i];
+                        options+='<option value="'+current_option.CODE+'">'+current_option.DESCRIPTION+'</option>';
+                    };
+
+                   $("#NokLGACode").html(options);
+                }
+            },
+            error: function (err) {
+                // console.log(err.responseText);
+            },
+            complete: function () {
+                // console.log("list fetched!");
+            }
+        });
     });
 
 });

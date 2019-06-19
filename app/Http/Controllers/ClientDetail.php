@@ -88,6 +88,19 @@ class ClientDetail extends App
         }   
       return $data;
     }
+    
+
+    public function getLGAsForState(Request $request){
+
+        $state = $request["state"];
+        $res=array('selected_lgas'=>'');
+
+        if(!empty($state)){
+            $res['selected_lgas'] = DB::select("select * from  lgas where state_code='".$state."'");
+        }
+        return $res;     
+
+    }
 
 
     public function processPersonalDetails(Request $request) {

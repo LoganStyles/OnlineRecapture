@@ -141,7 +141,7 @@ var base_url = "http://localhost:81/IEIOnlineRecapture/";
 $("#login_button").on("click", function(){
     var client_pin=$("#PIN").val();
     if(client_pin)
-    $(this).text("Loging in...")
+    $(this).text("Logging in...")
 //   var login_button=$(this).text()
 });
 

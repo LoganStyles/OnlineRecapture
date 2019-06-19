@@ -39,7 +39,7 @@
 		<!-- nav -->
 		<nav class="py-3 d-lg-flex">
 			<div id="logo">
-				<h1> <a href="index.html"><span class="fa fa-university"></span> Data Recapture </a></h1>
+				<h1> <a href="{{route('home')}}"><img style="max-width:35%;"  src="{{ asset('/css/images/iei_anchor.jpg')}}" /> Data Recapture </a></h1>
 			</div>
 			<label for="drop" class="toggle"><span class="fa fa-bars"></span></label>
 			<input type="checkbox" id="drop" />
