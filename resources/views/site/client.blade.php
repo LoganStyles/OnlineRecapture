@@ -928,6 +928,9 @@ $DateOfAppointment=(!isset($client_details['DateOfAppointment']) || trim($client
                             </div>
                         </div>
                         <div role="tabpanel" class="tab-pane" id="summary">
+                        <div class="alert alert-danger" style="display:none" id="page_errors">
+                            
+                        </div>
                             <div class="design-process-content">
                                 <h3>Schedule An Appointment</h3>
                                 <h5>To complete the Data Recapture Exercise, please visit one of our branches</h5>

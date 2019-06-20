@@ -14,9 +14,22 @@ use URL;
 class ClientDetail extends App
 {
     // private $base_url="http://192.168.130.10/RecaptureAPI/";
-    private $base_url="http://localhost/Recapture/";
+    // private $base_url="http://localhost/Recapture/";
     // private $base_url="http://localhost:62798/";
     //  private $base_url="https://ffpro.ieianchorpensions.com/RecaptureAPI/"; 
+
+    private $base_url="";   
+    
+
+    public function __construct() {
+
+        if($this->isPrivateIP()){
+            $this->base_url="http://192.168.130.10/RecaptureAPI/";
+
+        }else{
+            $this->base_url="https://ffpro.ieianchorpensions.com/RecaptureAPI/";
+        }
+    }
 
     public function index(){
         if(null !==(session('pin')) && null !==(session('clientID'))){
@@ -49,7 +62,6 @@ class ClientDetail extends App
         if(stripos($selected_pin, "PEN") !== 0 && (strlen($selected_pin)===12)){
             $selected_pin="PEN".$selected_pin;
         }
-        // 
 
         $result_data=$this->getClientDetails($selected_pin);
 
@@ -167,7 +179,17 @@ class ClientDetail extends App
 
     public function processAppointment(Request $request){
 
+        $this->validate($request, [
+            'contactEmail' => 'required',
+            'contactPhone' => 'required'
+        ]);
+
         $input = $request->all();
+
+        $clientDetails=session('clientDetails');
+        $ClientFirstName=$clientDetails['FirstName'];
+        $ClientLastName=$clientDetails['LastName'];
+       
 
         $subject="Data Recapture Appointment";
         
@@ -177,22 +199,37 @@ class ClientDetail extends App
         $selected_location=$location_details[0];
         $team_phone =$selected_location->TEAM_LEADER_PHONE;
         $team_email =$selected_location->TEAM_LEADER_EMAIL;
+        $team_leader_name =$selected_location->TEAM_LEADER;
+        $branch_office =$selected_location->BRANCH_OFFICE;
+        
 
         if($team_email !="" && $team_phone !=""){
+            
             $email_data=array(
-                'c_service_email' => 'cservice@ieianchorpensions.com',
-                'client_email'=>"emmanuel.okpukpan@ieianchorpensions.com",
-                // 'client_email'=>$input['contactEmail'],
+                'sender_email' => 'schedule_recapture@ieianchorpensions.com',
+                'client_email'=>$input['contactEmail'],
+                'client_phone'=>$input['contactPhone'],
+                'client_firstname'=>$ClientFirstName,
+                'client_lastname'=>$ClientLastName,
                 'subject'=>$subject,
                 'AppointmentDate'=>$input['DateOfAppointmentString'],
+                'branch_office'=>$branch_office,
+                'teamLeader'=>$team_leader_name ,
                 'teamPhone'=>$team_phone ,
                 'teamEmail'=>$team_email 
             );
-    
-            //mail from c.service or recapture to client
+
+            //mail to client
             Mail::send('emails.appointment', $email_data, function($message) use ($email_data) {
-                $message->from($email_data['c_service_email']);
+                $message->from($email_data['sender_email']);
                 $message->to($email_data['client_email']);
+                $message->subject($email_data['subject']);
+            });
+            
+            //send copy to to recapture team
+            Mail::send('emails.appointment_copy', $email_data, function($message) use ($email_data) {
+                $message->from($email_data['sender_email']);
+                $message->to("appointments.datarecapture@ieianchorpensions.com");
                 // $message->bcc($email_data['c_service_email']);//designated staff
                 $message->subject($email_data['subject']);
             });
@@ -241,6 +278,47 @@ class ClientDetail extends App
         }
 
         return $sanitized;
+    }
+
+    private function isPrivateIP(){
+
+        $ip_address=$this->getClientIPAddress();
+
+        if($ip_address !='UNKNOWN'){            
+            $str_ip_parts = explode (".", $ip_address); 
+
+            if($str_ip_parts[0]==10 || 
+            ($str_ip_parts[0]==192 && $str_ip_parts[1]==168)  || 
+            ($str_ip_parts[0]==172 && ($str_ip_parts[1]>=16 && $str_ip_parts[1]<=31)))
+            {
+                return true;
+            }else{
+                return false;
+            }
+            return false;
+        }
+        return false;
+    }
+
+    // Function to get the client ip address
+    private function getClientIPAddress() {
+        $ipaddress = '';
+        // if ($_SERVER['HTTP_CLIENT_IP'])
+        //     $ipaddress = $_SERVER['HTTP_CLIENT_IP'];
+        // else if($_SERVER['HTTP_X_FORWARDED_FOR'])
+        //     $ipaddress = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        // else if($_SERVER['HTTP_X_FORWARDED'])
+        //     $ipaddress = $_SERVER['HTTP_X_FORWARDED'];
+        // else if($_SERVER['HTTP_FORWARDED_FOR'])
+        //     $ipaddress = $_SERVER['HTTP_FORWARDED_FOR'];
+        //  if($_SERVER['HTTP_FORWARDED'])
+        //     $ipaddress = $_SERVER['HTTP_FORWARDED'];
+        if($_SERVER['REMOTE_ADDR'])
+            $ipaddress = $_SERVER['REMOTE_ADDR'];
+        else
+            $ipaddress = 'UNKNOWN';
+    
+        return $ipaddress;
     }
 
 

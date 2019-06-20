@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Data Recapture, recapture, IEI Anchor, IEI, IEI Anchor Pensions, PENCOM"">
     <meta name="author" content="">
-    <!--<link rel="icon" href="../../../../favicon.ico">-->
 
     <title>IEI Anchor Pensions | Data-Recapture</title>
 
@@ -35,8 +34,9 @@
 
     <main role="main" class="container">
       <div class="jumbotron">
-        <h1>Exercise Completed</h1>
-        <p class="lead">thanks for updating your records with us. an email has been sent to you on your appointment schedule</p>
+        <h1>1st Phase Completed</h1>
+        <p class="lead">Thanks for updating your records with us. An email has been sent to you on your appointment schedule</p>
+        <!-- <p>Hope to see you soon.</p> -->
         <a class="btn btn-lg btn-success" href="{{route('logout')}}" role="button">End</a>
       </div>
     </main>

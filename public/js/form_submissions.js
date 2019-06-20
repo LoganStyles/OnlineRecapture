@@ -1,8 +1,8 @@
-$.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
-});
+// $.ajaxSetup({
+//     headers: {
+//         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+//     }
+// });
 
 $(document).ready(function () {
 
@@ -329,26 +329,32 @@ $(document).ready(function () {
 
 
         $.ajax({
-
             type: 'POST',
+            headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
             url: base_url + 'public/process_appointment',
             // url: base_url + 'process_appointment',
             data: summaryData,
             success: function (data) {
-                console.log('data ' + data);
                 if (data.success === 1) {
                     window.location = base_url + "public/summary";
                     // window.location=base_url +"summary";
                 }
             },
-            error: function (err) {
-                console.log(err.responseText);
+            error: function (request, status, error) {
+                errors = $.parseJSON(request.responseText);
+                $("#page_errors").html("");
+                error_list = "<ul>";
+                $.each(errors, function (key, value) {
+                    error_list += "<li><p>" + value + "</p></li>";
+                    $('.alert-danger').show();
+                });
+                error_list += "</ul>";
+                $("#page_errors").html(error_list);
             },
             complete: function () {
                 $("#summary_button").attr('disabled', false);
                 $("#summary_button_span").hide();
             }
-
         });
 
     });
@@ -362,19 +368,19 @@ $(document).ready(function () {
             url: base_url + 'public/get_lgas',
             data: obj,
             success: function (results) {
-                var response =results.selected_lgas;
+                var response = results.selected_lgas;
 
                 $("#EmployerLGA").html("");
-                var options="";
-                var current_option="";
+                var options = "";
+                var current_option = "";
 
-                if(response.length > 0){
-                    for(var i=0;i < response.length; i++){
-                        current_option=response[i];
-                        options+='<option value="'+current_option.CODE+'">'+current_option.DESCRIPTION+'</option>';
+                if (response.length > 0) {
+                    for (var i = 0; i < response.length; i++) {
+                        current_option = response[i];
+                        options += '<option value="' + current_option.CODE + '">' + current_option.DESCRIPTION + '</option>';
                     };
 
-                   $("#EmployerLGA").html(options);
+                    $("#EmployerLGA").html(options);
                 }
             },
             error: function (err) {
@@ -395,19 +401,19 @@ $(document).ready(function () {
             url: base_url + 'public/get_lgas',
             data: obj,
             success: function (results) {
-                var response =results.selected_lgas;
+                var response = results.selected_lgas;
 
                 $("#LGAOfOrigin").html("");
-                var options="";
-                var current_option="";
+                var options = "";
+                var current_option = "";
 
-                if(response.length > 0){
-                    for(var i=0;i < response.length; i++){
-                        current_option=response[i];
-                        options+='<option value="'+current_option.CODE+'">'+current_option.DESCRIPTION+'</option>';
+                if (response.length > 0) {
+                    for (var i = 0; i < response.length; i++) {
+                        current_option = response[i];
+                        options += '<option value="' + current_option.CODE + '">' + current_option.DESCRIPTION + '</option>';
                     };
 
-                   $("#LGAOfOrigin").html(options);
+                    $("#LGAOfOrigin").html(options);
                 }
             },
             error: function (err) {
@@ -428,19 +434,19 @@ $(document).ready(function () {
             url: base_url + 'public/get_lgas',
             data: obj,
             success: function (results) {
-                var response =results.selected_lgas;
+                var response = results.selected_lgas;
 
                 $("#LGAOfResidence").html("");
-                var options="";
-                var current_option="";
+                var options = "";
+                var current_option = "";
 
-                if(response.length > 0){
-                    for(var i=0;i < response.length; i++){
-                        current_option=response[i];
-                        options+='<option value="'+current_option.CODE+'">'+current_option.DESCRIPTION+'</option>';
+                if (response.length > 0) {
+                    for (var i = 0; i < response.length; i++) {
+                        current_option = response[i];
+                        options += '<option value="' + current_option.CODE + '">' + current_option.DESCRIPTION + '</option>';
                     };
 
-                   $("#LGAOfResidence").html(options);
+                    $("#LGAOfResidence").html(options);
                 }
             },
             error: function (err) {
@@ -461,19 +467,19 @@ $(document).ready(function () {
             url: base_url + 'public/get_lgas',
             data: obj,
             success: function (results) {
-                var response =results.selected_lgas;
+                var response = results.selected_lgas;
 
                 $("#NokLGACode").html("");
-                var options="";
-                var current_option="";
+                var options = "";
+                var current_option = "";
 
-                if(response.length > 0){
-                    for(var i=0;i < response.length; i++){
-                        current_option=response[i];
-                        options+='<option value="'+current_option.CODE+'">'+current_option.DESCRIPTION+'</option>';
+                if (response.length > 0) {
+                    for (var i = 0; i < response.length; i++) {
+                        current_option = response[i];
+                        options += '<option value="' + current_option.CODE + '">' + current_option.DESCRIPTION + '</option>';
                     };
 
-                   $("#NokLGACode").html(options);
+                    $("#NokLGACode").html(options);
                 }
             },
             error: function (err) {

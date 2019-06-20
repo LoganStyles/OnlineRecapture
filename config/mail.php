@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+    'host' => env('MAIL_HOST', 'mail.ieianchorpensions.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -57,7 +57,7 @@ return [
 
     'from' => [
         'address' => env('MAIL_FROM_ADDRESS', 'schedule_recapture@ieianchorpensions.com'),
-        'name' => env('MAIL_FROM_NAME', 'IEIANCHOR PENSIONS'),
+        'name' => env('MAIL_FROM_NAME', 'IEIANCHOR'),
     ],
 
     /*
